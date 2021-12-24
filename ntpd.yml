@@ -5,7 +5,15 @@
       name: ntp
       state: latest
 
-  - name: Start ntpd
+  - name: Update ntpd conf
+    lineinfile:
+      path: /etc/ntp.conf
+      regexp: "^server 1.centos.pool.ntp.org iburst$"
+      line: "server asia.pool.ntp.org iburst"
+    notify: restart ntpd
+
+  handlers:
+  - name: restart ntpd
     systemd:
-      state: started
+      state: restarted
       name: ntpd
