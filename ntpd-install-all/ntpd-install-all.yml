@@ -1,0 +1,4 @@
+- hosts: all
+  tasks:
+  - name: Include playbook
+    include: "{{  ansible_os_family  }}-ntpd.yml"

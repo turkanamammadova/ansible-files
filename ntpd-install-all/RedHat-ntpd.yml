@@ -1,0 +1,4 @@
+- name: Install ntpd on RedHat
+  yum: 
+    name: ntp
+    state: latest
